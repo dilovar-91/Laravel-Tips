@@ -2,9 +2,9 @@
 
 Daily Laravel/PHP tips I share on my [X](https://x.com/OussamaMater) and [LinkedIn](https://www.linkedin.com/in/oussamamater/).
 
-## Tip #1 💡: Use rebinding events to refresh dependencies
+## Совет №1 💡: Используйте события перепривязки для обновления зависимостей
 
-When a bound instance in the Laravel container is rebound, a rebinding event is triggered. You can listen to this event to ensure that the classes using the instance stay up to date. You can achieve this by using the rebinding method or simply using the refresh shortcut 🚀
+Когда экземпляр, связанный в контейнере Laravel, перепривязывается, срабатывает событие перепривязки. Вы можете отслеживать это событие, чтобы убедиться, что классы, использующие этот экземпляр, остаются актуальными. Это можно сделать с помощью метода `rebinding` или просто с помощью сокращения `refresh` 🚀
 
 ```php
 <?php
@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
 
             $paymentService->setTaxService($app['tax.service']);
 
-            // Will set a new TaxService instance for the Payment Service
+            // Установит новый экземпляр TaxService для PaymentService
             $app->refresh('tax.service', $paymentService, 'setTaxService');
 
             return $paymentService;
